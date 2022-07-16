@@ -23,7 +23,7 @@ function initDebug()
         self:print('Debug enabled')
     end
 
-    function Debug:tick()
+    function Debug:tick(dt)
         if InputPressed(self.toggleKey) then
             self.enabled = not self.enabled
         end

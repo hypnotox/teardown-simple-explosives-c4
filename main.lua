@@ -26,21 +26,21 @@ function init()
     C4Detonator:init()
 end
 
-function tick()
+function tick(dt)
     if not initialized then
         initializeDependencies()
     end
 
-    Debug:tick()
-    C4Manager:tick()
-    C4Detonator:tick()
+    Debug:tick(dt)
+    C4Manager:tick(dt)
+    C4Detonator:tick(dt)
 end
 
-function update()
+function update(dt)
     if not initialized then
         initializeDependencies()
     end
 
-    C4Manager:update()
-    C4Detonator:update()
+    C4Manager:update(dt)
+    C4Detonator:update(dt)
 end

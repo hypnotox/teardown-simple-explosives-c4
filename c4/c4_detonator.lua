@@ -15,7 +15,7 @@ function initC4Detonator()
     end
 
     ---C4 detonator tick method
-    function C4Detonator:tick()
+    function C4Detonator:tick(dt)
         if GetString('game.player.tool') ~= 'hypnotox_explosives_c4' then
             return
         end
@@ -45,18 +45,20 @@ function initC4Detonator()
         end
 
         if InputDown(Input.rmb) then
-            
+            SetShapeEmissiveScale(self:getButtonShape(), 1)
+        else
+            SetShapeEmissiveScale(self:getButtonShape(), 0)
         end
     end
 
     ---C4 detonator update method
-    function C4Detonator:update()
+    function C4Detonator:update(dt)
         
     end
 
     function C4Detonator:getButtonShape()
         local body = GetToolBody()
 
-        return GetBodyShapes(body)[1]
+        return GetBodyShapes(body)[2]
     end
 end
