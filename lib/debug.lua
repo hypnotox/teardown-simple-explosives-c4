@@ -2,7 +2,7 @@ function initDebug()
     Debug = {
         enabled = false,
         toggleKey = Input.home,
-        isExtraDebugInfoEnabled = true,
+        isExtraDebugInfoEnabled = false,
     }
 
     local function dumpTransform(transform)
