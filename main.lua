@@ -1,12 +1,12 @@
 --[[
 -- Libraries
-#include "scripts/lib/input.lua"
-#include "scripts/lib/debug.lua"
+#include "lib/input.lua"
+#include "lib/debug.lua"
 
 -- C4
-#include "scripts/c4/c4_detonator.lua"
-#include "scripts/c4/c4_manager.lua"
-#include "scripts/c4/c4.lua"
+#include "c4/c4_detonator.lua"
+#include "c4/c4_manager.lua"
+#include "c4/c4.lua"
 ]]
 
 local initialized = false

@@ -12,7 +12,7 @@ function initC4()
         local body = GetShapeBody(attachShape)
         local isBodyDynamic = IsBodyDynamic(body)
         local shapeIndex = isBodyDynamic and 2 or 1
-        local shape = Spawn('MOD/prefabs/c4.xml', transform, not isBodyDynamic, true)[shapeIndex]
+        local shape = Spawn('MOD/c4/c4.xml', transform, not isBodyDynamic, true)[shapeIndex]
 
         local instance = {
             shape = shape,
