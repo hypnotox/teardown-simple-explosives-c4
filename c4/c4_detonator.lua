@@ -20,10 +20,10 @@ function initC4Detonator()
             return
         end
 
-        local offset = Transform(Vec(1.2, -0.3, -1.2))
+        local offset = Transform(Vec(1.3, -0.45, -1.2))
         SetToolTransform(offset, 0.5)
 
-        if InputPressed(Input:lmb()) and GetPlayerVehicle() == 0 then
+        if InputPressed(Input.lmb) and GetPlayerVehicle() == 0 then
             local player = GetPlayerCameraTransform()
             local fwd = TransformToParentVec(player, Vec(0, 0, -1))
             local hit, dist, normal, shape = QueryRaycast(player.pos, fwd, 5)
@@ -36,17 +36,27 @@ function initC4Detonator()
             end
         end
 
-        if InputPressed(Input:rmb()) then
+        if InputPressed(Input.rmb) then
             local body = GetPlayerPickBody()
 
             if body == 0 then
                 C4Manager:detonate()
             end
         end
+
+        if InputDown(Input.rmb) then
+            
+        end
     end
 
     ---C4 detonator update method
     function C4Detonator:update()
         
+    end
+
+    function C4Detonator:getButtonShape()
+        local body = GetToolBody()
+
+        return GetBodyShapes(body)[1]
     end
 end

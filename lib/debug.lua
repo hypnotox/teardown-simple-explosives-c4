@@ -1,7 +1,7 @@
 function initDebug()
     Debug = {
         enabled = false,
-        toggleKey = Input.home(),
+        toggleKey = Input.home,
         isExtraDebugInfoEnabled = true,
     }
 
@@ -28,7 +28,7 @@ function initDebug()
             self.enabled = not self.enabled
         end
 
-        if InputPressed(Input.pgUp()) then
+        if InputPressed(Input.pgUp) then
             self.isExtraDebugInfoEnabled = not self.isExtraDebugInfoEnabled
         end
 

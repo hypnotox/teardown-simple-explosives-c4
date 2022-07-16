@@ -1,267 +1,109 @@
 function initInput()
-    Input = {}
-
-    -- Physical
-
-    ---@return string Escape key
-    function Input.esc()
-        return 'esc'
-    end
-
-    ---@return string Tab key
-    function Input.tab()
-        return 'tab'
-    end
-
-    ---@return string Left mouse button
-    function Input.lmb()
-        return 'lmb'
-    end
-
-    ---@return string Right mouse button
-    function Input.rmb()
-        return 'rmb'
-    end
-
-    ---@return string Middle mouse button
-    function Input.mmb()
-        return 'mmb'
-    end
-
-    ---@return string Up arrow key
-    function Input.upArrow()
-        return 'uparrow'
-    end
-
-    ---@return string Down arrow key
-    function Input.downArrow()
-        return 'downarrow'
-    end
-
-    ---@return string Left arrow key
-    function Input.leftArrow()
-        return 'leftarrow'
-    end
-
-    ---@return string Right arrow key
-    function Input.rightArrow()
-        return 'rightarrow'
-    end
-
-    ---@return string Function keys
-    function Input.f1()
-        return 'f1'
-    end
-
-    ---@return string Function keys
-    function Input.f2()
-        return 'f2'
-    end
-
-    ---@return string Function keys
-    function Input.f3()
-        return 'f3'
-    end
-
-    ---@return string Function keys
-    function Input.f4()
-        return 'f4'
-    end
-
-    ---@return string Function keys
-    function Input.f5()
-        return 'f5'
-    end
-
-    ---@return string Function keys
-    function Input.f6()
-        return 'f6'
-    end
-
-    ---@return string Function keys
-    function Input.f7()
-        return 'f7'
-    end
-
-    ---@return string Function keys
-    function Input.f8()
-        return 'f8'
-    end
-
-    ---@return string Function keys
-    function Input.f9()
-        return 'f9'
-    end
-
-    ---@return string Function keys
-    function Input.f10()
-        return 'f10'
-    end
-
-    ---@return string Function keys
-    function Input.f11()
-        return 'f11'
-    end
-
-    ---@return string Function keys
-    function Input.f12()
-        return 'f12'
-    end
-
-    ---@return string Backspace key
-    function Input.backspace()
-        return 'backspace'
-    end
-
-    ---@return string Alt key
-    function Input.alt()
-        return 'alt'
-    end
-
-    ---@return string Delete key
-    function Input.delete()
-        return 'delete'
-    end
-
-    ---@return string Home key
-    function Input.home()
-        return 'home'
-    end
-
-    ---@return string End key
-    function Input.endKey()
-        return 'end'
-    end
-
-    ---@return string PgUp key
-    function Input.pgUp()
-        return 'pgup'
-    end
-
-    ---@return string PgDown key
-    function Input.pgDown()
-        return 'pgdown'
-    end
-
-    ---@return string Insert key
-    function Input.insert()
-        return 'insert'
-    end
-
-    ---@return string Space bar
-    function Input.space()
-        return 'space'
-    end
-
-    ---@return string Shift key
-    function Input.shift()
-        return 'shift'
-    end
-
-    ---@return string Ctrl key
-    function Input.ctrl()
-        return 'ctrl'
-    end
-
-    ---@return string Return key
-    function Input.returnKey()
-        return 'return'
-    end
-
-    ---@return string Any key or button
-    function Input.any()
-        return 'any'
-    end
-
-    ---@return string Mouse horizontal diff. Only valid in InputValue.
-    function Input.mouseDx()
-        return 'mousedx'
-    end
-
-    ---@return string Mouse vertical diff. Only valid in InputValue.
-    function Input.mouseDy()
-        return 'mousedy'
-    end
-
-    ---@return string Mouse wheel. Only valid in InputValue.
-    function Input.mousewheel()
-        return 'mousewheel'
-    end
-
-    -- Logical
-
-    ---@return string Move forward / Accelerate
-    function Input.up()
-        return 'up'
-    end
-
-    ---@return string Move backward / Brake
-    function Input.down()
-        return 'down'
-    end
-
-    ---@return string Move left
-    function Input.left()
-        return 'left'
-    end
-
-    ---@return string Move right
-    function Input.right()
-        return 'right'
-    end
-
-    ---@return string Interact
-    function Input.interact()
-        return 'interact'
-    end
-
-    ---@return string Flashlight
-    function Input.flashlight()
-        return 'flashlight'
-    end
-
-    ---@return string Jump
-    function Input.jump()
-        return 'jump'
-    end
-
-    ---@return string Crouch
-    function Input.crouch()
-        return 'crouch'
-    end
-
-    ---@return string Use tool
-    function Input.usetool()
-        return 'usetool'
-    end
-
-    ---@return string Grab
-    function Input.grab()
-        return 'grab'
-    end
-
-    ---@return string Handbrake
-    function Input.handbrake()
-        return 'handbrake'
-    end
-
-    ---@return string Map
-    function Input.map()
-        return 'map'
-    end
-
-    ---@return string Pause game (escape)
-    function Input.pause()
-        return 'pause'
-    end
-
-    ---@return string Camera x movement, scaled by sensitivity. Only valid in InputValue.
-    function Input.cameraX()
-        return 'cameraX'
-    end
-
-    ---@return string Camera y movement, scaled by sensitivity. Only valid in InputValue.
-    function Input.cameraY()
-        return 'cameraY'
-    end
+    ---@class Input:table
+    ---@field esc string Escape key
+    ---@field tab string Tab key
+    ---@field lmb string Left mouse button
+    ---@field rmb string Right mouse button
+    ---@field mmb string Middle mouse button
+    ---@field upArrow string Up arrow key
+    ---@field downArrow string Down arrow key
+    ---@field leftArrow string Left arrow key
+    ---@field rightArrow string Right arrow key
+    ---@field f1 string Function keys
+    ---@field f2 string Function keys
+    ---@field f3 string Function keys
+    ---@field f4 string Function keys
+    ---@field f5 string Function keys
+    ---@field f6 string Function keys
+    ---@field f7 string Function keys
+    ---@field f8 string Function keys
+    ---@field f9 string Function keys
+    ---@field f10 string Function keys
+    ---@field f11 string Function keys
+    ---@field f12 string Function keys
+    ---@field backspace string Backspace key
+    ---@field alt string Alt key
+    ---@field delete string Delete key
+    ---@field home string Home key
+    ---@field endKey string End key
+    ---@field pgUp string PgUp key
+    ---@field pgDown string PgDown key
+    ---@field insert string Insert key
+    ---@field space string Space bar
+    ---@field shift string Shift key
+    ---@field ctrl string Ctrl key
+    ---@field returnKey string Return key
+    ---@field any string Any key or button
+    ---@field mouseDx string Mouse horizontal diff. Only valid in InputValue.
+    ---@field mouseDy string Mouse vertical diff. Only valid in InputValue.
+    ---@field mousewheel string Mouse wheel. Only valid in InputValue.
+    ---@field up string Move forward / Accelerate
+    ---@field down string Move backward / Brake
+    ---@field left string Move left
+    ---@field right string Move right
+    ---@field interact string Interact
+    ---@field flashlight string Flashlight
+    ---@field jump string Jump
+    ---@field crouch string Crouch
+    ---@field usetool string Use tool
+    ---@field grab string Grab
+    ---@field handbrake string Handbrake
+    ---@field map string Map
+    ---@field pause string Pause game (escape)
+    ---@field cameraX string Camera x movement, scaled by sensitivity. Only valid in InputValue.
+    ---@field cameraY string Camera y movement, scaled by sensitivity. Only valid in InputValue.
+    Input = {
+        esc = 'esc',
+        tab = 'tab',
+        lmb = 'lmb',
+        rmb = 'rmb',
+        mmb = 'mmb',
+        upArrow = 'uparrow',
+        downArrow = 'downarrow',
+        leftArrow = 'leftarrow',
+        rightArrow = 'rightarrow',
+        f1 = 'f1',
+        f2 = 'f2',
+        f3 = 'f3',
+        f4 = 'f4',
+        f5 = 'f5',
+        f6 = 'f6',
+        f7 = 'f7',
+        f8 = 'f8',
+        f9 = 'f9',
+        f10 = 'f10',
+        f11 = 'f11',
+        f12 = 'f12',
+        backspace = 'backspace',
+        alt = 'alt',
+        delete = 'delete',
+        home = 'home',
+        endKey = 'end',
+        pgUp = 'pgup',
+        pgDown = 'pgdown',
+        insert = 'insert',
+        space = 'space',
+        shift = 'shift',
+        ctrl = 'ctrl',
+        returnKey = 'return',
+        any = 'any',
+        mouseDx = 'mousedx',
+        mouseDy = 'mousedy',
+        mousewheel = 'mousewheel',
+        up = 'up',
+        down = 'down',
+        left = 'left',
+        right = 'right',
+        interact = 'interact',
+        flashlight = 'flashlight',
+        jump = 'jump',
+        crouch = 'crouch',
+        usetool = 'usetool',
+        grab = 'grab',
+        handbrake = 'handbrake',
+        map = 'map',
+        pause = 'pause',
+        cameraX = 'cameraX',
+        cameraY = 'cameraY',
+    }
 end
