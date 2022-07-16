@@ -1,0 +1,4 @@
+name = Simple Explosives
+author = HypnoTox
+tags = Tool
+description = A mod adding some explosives.
