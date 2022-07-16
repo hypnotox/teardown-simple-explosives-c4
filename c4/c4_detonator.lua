@@ -5,6 +5,8 @@ function initC4Detonator()
         maxAmmo = 20,
     }
 
+    local isPicking = false
+
     ---Initializes C4 detonator
     function C4Detonator:init()
         local modelPath = 'MOD/c4/model/c4_detonator.vox'
@@ -20,8 +22,8 @@ function initC4Detonator()
             return
         end
 
-        local offset = Transform(Vec(1.3, -0.45, -1.2))
-        SetToolTransform(offset, 0.5)
+        local offset = Transform(Vec(0.65, -0.85, -1.7), QuatEuler(-6, 37, -10))
+        SetToolTransform(offset, 0.2)
 
         if InputPressed(Input.lmb) and GetPlayerVehicle() == 0 then
             local player = GetPlayerCameraTransform()
@@ -41,13 +43,21 @@ function initC4Detonator()
 
             if body == 0 then
                 C4Manager:detonate()
+            else
+                isPicking = true
             end
         end
 
-        if InputDown(Input.rmb) then
+        Debug:watch('isPicking', isPicking)
+
+        if InputDown(Input.rmb) and not isPicking then
             SetShapeEmissiveScale(self:getButtonShape(), 1)
         else
             SetShapeEmissiveScale(self:getButtonShape(), 0)
+        end
+
+        if InputReleased(Input.rmb) then
+            isPicking = false
         end
     end
 
