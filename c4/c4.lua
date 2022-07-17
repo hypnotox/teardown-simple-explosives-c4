@@ -7,7 +7,7 @@ function initC4()
 
     ---Creates new C4 entity
     ---@param transform TransformType
-    ---@param attachShape number
+    ---@param attachShape integer
     ---@return C4
     function C4:new(transform, attachShape)
         local attachBody = GetShapeBody(attachShape)
