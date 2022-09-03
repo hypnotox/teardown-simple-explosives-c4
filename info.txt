@@ -1,4 +1,4 @@
-name = Simple Explosives
+name = Simple Explosives - C4
 author = HypnoTox
 tags = Tool
-description = A mod adding some explosives.
+description = A mod adding C4 explosives.

@@ -1,0 +1,13 @@
+A mod adding C4 explosives.
+
+[h2]Features[/h2]
+
+- Unlimited C4s
+- High detail model
+
+[h2]Usage[/h2]
+
+When you have the tool selected simply left click to place a C4.
+To explode all planted C4s, simply have the tool selected and right click while not in range to grab anything.
+
+If you have any feedback, suggestions or come across any bugs/problems please comment below.
