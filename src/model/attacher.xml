@@ -1,5 +1,5 @@
 <prefab version="1.1.0">
-	<group name="instance=MOD/general/model/attacher.xml" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0">
+	<group name="instance=MOD/src/model/attacher.xml" pos="0.0 0.0 0.0" rot="0.0 0.0 0.0">
 		<voxbox name="attacher" pos="-0.1 -0.1 -0.1" size="2 2 1" material="wood" color="0.24 0.42 0.07"/>
 		<joint name="attacher_joint" pos="0.19 0.01 0.0" type="hinge" size="0.1" rotstrength="1" rotspring="0"/>
 		<joint name="attacher_joint" pos="0.01 0.01 0.0" type="hinge" size="0.1" rotstrength="1" rotspring="0"/>
