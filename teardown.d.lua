@@ -127,7 +127,7 @@ function Menu() end
 function ClearKey(key) end
 
 ---@param parent string The parent registry key
----@return table children Indexed table of strings with child keys
+---@return table<string> children Indexed table of strings with child keys
 ---@see @https://www.teardowngame.com/modding/api.html#ListKeys
 function ListKeys(parent) end
 
@@ -580,7 +580,7 @@ function FindShape(tag, global) end
 
 ---@param tag string Tag name
 ---@param global boolean|nil Search in entire scene
----@return table list Indexed table with handles to all shapes with specified tag
+---@return table<number> list Indexed table with handles to all shapes with specified tag
 ---@see @https://www.teardowngame.com/modding/api.html#FindShapes
 function FindShapes(tag, global) end
 
@@ -605,12 +605,12 @@ function GetShapeWorldTransform(handle) end
 function GetShapeBody(handle) end
 
 ---@param shape number Shape handle
----@return table list Indexed table with joints connected to shape
+---@return table<number> list Indexed table with joints connected to shape
 ---@see @https://www.teardowngame.com/modding/api.html#GetShapeJoints
 function GetShapeJoints(shape) end
 
 ---@param shape number Shape handle
----@return table list Indexed table of lights owned by shape
+---@return table<number> list Indexed table of lights owned by shape
 ---@see @https://www.teardowngame.com/modding/api.html#GetShapeLights
 function GetShapeLights(shape) end
 
@@ -945,7 +945,7 @@ function FindVehicle(tag, global) end
 
 ---@param tag string Tag name
 ---@param global boolean|nil Search in entire scene
----@return table list Indexed table with handles to all vehicles with specified tag
+---@return table<number> list Indexed table with handles to all vehicles with specified tag
 ---@see @https://www.teardowngame.com/modding/api.html#FindVehicles
 function FindVehicles(tag, global) end
 
@@ -1152,7 +1152,7 @@ function QueryRejectShape(shape) end
 ---@param rejectTransparent boolean|nil Raycast through transparent materials. Default false.
 ---@return boolean hit True if raycast hit something
 ---@return number dist Hit distance from origin
----@return table normal World space normal at hit point
+---@return VectorType normal World space normal at hit point
 ---@return integer shape Handle to hit shape
 ---@see @https://www.teardowngame.com/modding/api.html#QueryRaycast
 function QueryRaycast(origin, direction, maxDist, radius, rejectTransparent) end
@@ -1320,7 +1320,7 @@ function ParticleFlags(bitmask) end
 function SpawnParticle(pos, velocity, lifetime) end
 
 ---@param xml string File name or xml string
----@param transform table Spawn transform
+---@param transform TransformType Spawn transform
 ---@param allowStatic boolean|nil Allow spawning static shapes and bodies (default false)
 ---@param jointExisting boolean|nil Allow joints to connect to existing scene geometry (default false)
 ---@return table<integer> entities Indexed table with handles to all spawned entities
@@ -1335,7 +1335,7 @@ function Spawn(xml, transform, allowStatic, jointExisting) end
 ---@see @https://www.teardowngame.com/modding/api.html#Shoot
 function Shoot(origin, direction, type, strength, maxDist) end
 
----@param origin table Origin in world space as vector
+---@param origin VectorType Origin in world space as vector
 ---@param radius number Affected radius, in range 0.0 to 5.0
 ---@param type string|nil Paint type. Can be 'explosion' or 'spraycan'. Default is spraycan.
 ---@param probability number|nil Dithering probability between zero and one, default is 1.0
