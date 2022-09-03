@@ -87,14 +87,14 @@ function initDebug()
     end
 
     ---@param name string Name
-    ---@param value string Value
+    ---@param value string|number|boolean Value
     ---@see @https://www.teardowngame.com/modding/api.html#DebugWatch
     function Debug:watch(name, value)
         if not self.isEnabled then
             return
         end
 
-        DebugWatch(name, value)
+        DebugWatch(name, tostring(value))
     end
 
     ---@param message string Message to display
