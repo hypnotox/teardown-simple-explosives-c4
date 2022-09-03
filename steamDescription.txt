@@ -11,3 +11,5 @@ When you have the tool selected simply left click to place a C4.
 To explode all planted C4s, simply have the tool selected and right click while not in range to grab anything.
 
 If you have any feedback, suggestions or come across any bugs/problems please comment below.
+
+(I am planning to develop more types of explosives, all under the name "Simple Explosives")
