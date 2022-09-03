@@ -4,9 +4,9 @@
 #include "lib/debug.lua"
 
 -- C4
-#include "c4/c4_detonator.lua"
-#include "c4/c4_manager.lua"
-#include "c4/c4.lua"
+#include "src/c4/c4_detonator.lua"
+#include "src/c4/c4_manager.lua"
+#include "src/c4/c4.lua"
 ]]
 
 local initialized = false

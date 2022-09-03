@@ -29,7 +29,7 @@ function initC4Detonator()
 
     ---Initializes C4 detonator
     function C4Detonator:init()
-        local modelPath = 'MOD/c4/model/c4_detonator.vox'
+        local modelPath = 'MOD/src/c4/model/c4_detonator.vox'
         
         RegisterTool('hypnotox_explosives_c4', 'C4', modelPath, 6)
         SetBool('game.tool.hypnotox_explosives_c4.enabled', true)
