@@ -13,7 +13,7 @@ function initC4()
         local attachBody = GetShapeBody(attachShape)
         local isBodyDynamic = IsBodyDynamic(attachBody)
         local attacherIndex = isBodyDynamic and 2 or 1
-        local attacher = Spawn('MOD/c4/model/c4_attacher.xml', transform, not isBodyDynamic, true)[attacherIndex]
+        local attacher = Spawn('MOD/general/model/attacher.xml', transform, not isBodyDynamic, true)[attacherIndex]
         local body = Spawn('<vox pos="0.0 -0.2 -0.05" file="MOD/c4/model/c4.vox" scale="0.25"/>', transform)[1]
 
         local instance = {
