@@ -1,47 +1,36 @@
 function initDebug()
+    ---@class Debug:table
+    ---@field toggleKey string
+    ---@field isEnabled boolean
+    ---@field toggleExtraInfoKey string
+    ---@field isExtraDebugInfoEnabled boolean
     Debug = {
-        enabled = false,
         toggleKey = Input.home,
+        isEnabled = false,
+        toggleExtraInfoKey = Input.endKey,
         isExtraDebugInfoEnabled = false,
     }
 
-    local function dumpTransform(transform)
-        local t = TransformCopy(transform)
-        local x, y, z = GetQuatEuler(t.rot)
-        t.rot = {x, y, z}
-
-        return Debug:dumpString(t)
-    end
-
-    function Debug:init()
-        self.enabled = GetBool('savegame.mod.features.debug.enabled') or false
-
-        if not self.enabled then
-            return
-        end
-
-        self:print('Debug enabled')
-    end
-
-    function Debug:tick(dt)
+    function Debug:tick()
         if InputPressed(self.toggleKey) then
-            self.enabled = not self.enabled
+            self.isEnabled = not self.isEnabled
         end
 
-        if InputPressed(Input.pgUp) then
-            self.isExtraDebugInfoEnabled = not self.isExtraDebugInfoEnabled
-        end
-
-        if not self.enabled then
+        if not self.isEnabled then
             return
+        end
+
+        if InputPressed(self.toggleExtraInfoKey) then
+            self.isExtraDebugInfoEnabled = not self.isExtraDebugInfoEnabled
         end
 
         local playerTransform = GetCameraTransform()
         local cameraTransform = GetCameraTransform()
 
-        self:watch('player', dumpTransform(playerTransform))
-        self:watch('camera', dumpTransform(cameraTransform))
+        self:watch('player', self:tableToString(playerTransform))
+        self:watch('camera', self:tableToString(cameraTransform))
 
+        -- Extra info --
         if not self.isExtraDebugInfoEnabled then
             return
         end
@@ -49,7 +38,7 @@ function initDebug()
         -- Tool
         local tool = GetToolBody()
         local toolTransform = GetBodyTransform(tool)
-        self:watch('tool', dumpTransform(toolTransform))
+        self:watch('tool', self:tableToString(toolTransform))
 
         --Raycast forwards
         local dir = TransformToParentVec(cameraTransform, {0, 0, -1})
@@ -68,32 +57,50 @@ function initDebug()
 
     -- Debug functions --
 
+    ---@param p0 VectorType World space point as vector
+    ---@param p1 VectorType World space point as vector
+    ---@param r number|nil Red
+    ---@param g number|nil Green
+    ---@param b number|nil Blue
+    ---@param a number|nil Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DebugLine
     function Debug:line(p0, p1, r, g, b, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DebugLine(p0, p1, r or 255, g or 255, b or 255, a or 1)
     end
 
+    ---@param p0 VectorType World space point as vector
+    ---@param r number|nil Red
+    ---@param g number|nil Green
+    ---@param b number|nil Blue
+    ---@param a number|nil Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DebugCross
     function Debug:cross(p0, r, g, b, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DebugCross(p0, r or 255, g or 255, b or 255, a or 1)
     end
 
+    ---@param name string Name
+    ---@param value string Value
+    ---@see @https://www.teardowngame.com/modding/api.html#DebugWatch
     function Debug:watch(name, value)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DebugWatch(name, value)
     end
 
+    ---@param message string Message to display
+    ---@see @https://www.teardowngame.com/modding/api.html#DebugPrint
     function Debug:print(message)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
@@ -102,48 +109,72 @@ function initDebug()
 
     -- Body and shape functions --
 
+    ---@param handle integer Body handle
+    ---@param a number Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawBodyOutline
     function Debug:bodyOutline(handle, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DrawBodyOutline(handle, a or 1)
     end
 
+    ---@param handle integer Body handle
+    ---@param r number Red
+    ---@param g number Green
+    ---@param b number|nil Blue
+    ---@param a number|nil Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawBodyOutline
     function Debug:bodyOutline(handle, r, g, b, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DrawBodyOutline(handle, r or 255, g or 255, b or 255, a or 1)
     end
 
+    ---@param handle integer Shape handle
+    ---@param amount number Amount
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawShapeHighlight
     function Debug:bodyHighlight(handle, amount)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
-        DrawShapeHighlight(handle, amount)
+        DrawBodyHighlight(handle, amount)
     end
 
+    ---@param handle integer Shape handle
+    ---@param a number Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawShapeOutline
     function Debug:shapeOutline(handle, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
-        DrawBodyOutline(handle, a or 1)
+        DrawShapeOutline(handle, a or 1)
     end
 
+    ---@param handle integer Shape handle
+    ---@param r number|nil Red
+    ---@param g number|nil Green
+    ---@param b number|nil Blue
+    ---@param a number Alpha
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawShapeOutline
     function Debug:shapeOutline(handle, r, g, b, a)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
         DrawShapeOutline(handle, r or 255, g or 255, b or 255, a or 1)
     end
 
+    ---@param handle integer Shape handle
+    ---@param amount number Amount
+    ---@see @https://www.teardowngame.com/modding/api.html#DrawShapeHighlight
     function Debug:shapeHighlight(handle, amount)
-        if not self.enabled then
+        if not self.isEnabled then
             return
         end
 
@@ -152,16 +183,21 @@ function initDebug()
 
     -- Other dump functions --
 
-    -- Used to dump a variable onto screen
+    ---Used to dump a variable onto screen
+    ---@param object any
+    ---@param title string
     function Debug:dump(object, title)
         if title then
-            self:print(title .. ': ' .. self:dumpString(object))
+            self:print(title .. ': ' .. self:tableToString(object))
         else
-            self:print(self:dumpString(object))
+            self:print(self:tableToString(object))
         end
     end
 
-    function Debug:dumpString(object)
+    ---Get object in printable format
+    ---@param object any
+    ---@return string
+    function Debug:tableToString(object)
         if object == nil then
             return 'nil'
         end
@@ -184,7 +220,7 @@ function initDebug()
             elseif (type(v) == 'string') then
                 toDump = toDump .. '\'' .. v .. '\', '
             else
-                toDump = toDump .. self:dumpString(v) .. ', '
+                toDump = toDump .. self:tableToString(v) .. ', '
             end
         end
 

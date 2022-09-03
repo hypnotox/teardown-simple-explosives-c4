@@ -22,25 +22,24 @@ end
 
 function init()
     initializeDependencies()
-    Debug:init() -- Must be disabled when publishing
     C4Detonator:init()
 end
 
-function tick(dt)
+function tick()
     if not initialized then
         initializeDependencies()
     end
 
-    Debug:tick(dt)
-    C4Manager:tick(dt)
-    C4Detonator:tick(dt)
+    Debug:tick()
+    C4Manager:tick()
+    C4Detonator:tick()
 end
 
-function update(dt)
+function update()
     if not initialized then
         initializeDependencies()
     end
 
-    C4Manager:update(dt)
-    C4Detonator:update(dt)
+    C4Manager:update()
+    C4Detonator:update()
 end

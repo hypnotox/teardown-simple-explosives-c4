@@ -8,7 +8,7 @@ function initC4Manager()
     }
 
     ---C4 manager tick method
-    function C4Manager:tick(dt)
+    function C4Manager:tick()
         Debug:watch('Planted explosives', #self.placedC4)
 
         for i = #self.placedC4, 1, -1 do
@@ -17,7 +17,7 @@ function initC4Manager()
     end
 
     ---C4 manager update method
-    function C4Manager:update(dt)
+    function C4Manager:update()
         self:detonateNext()
     end
 

@@ -17,7 +17,7 @@ function initC4Detonator()
     end
 
     ---C4 detonator tick method
-    function C4Detonator:tick(dt)
+    function C4Detonator:tick()
         if GetString('game.player.tool') ~= 'hypnotox_explosives_c4' then
             return
         end
@@ -62,7 +62,7 @@ function initC4Detonator()
     end
 
     ---C4 detonator update method
-    function C4Detonator:update(dt)
+    function C4Detonator:update()
         
     end
 
