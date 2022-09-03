@@ -24,11 +24,23 @@ function initDebug()
             self.isExtraDebugInfoEnabled = not self.isExtraDebugInfoEnabled
         end
 
-        local playerTransform = GetCameraTransform()
+        local playerTransform = GetPlayerTransform()
         local cameraTransform = GetCameraTransform()
+
+        local dir = TransformToParentVec(cameraTransform, {0, 0, -1})
+        local hit, dist, normal, _ = QueryRaycast(cameraTransform.pos, dir, 10)
+
+        if hit then
+            local hitPoint = VecAdd(cameraTransform.pos, VecScale(dir, dist))
+            local hitTransform = Transform(hitPoint, QuatLookAt(hitPoint, VecAdd(hitPoint, normal)))
+            self:line(hitPoint, TransformToParentPoint(hitTransform, Vec(-1, 0, 0)), 0, 1, 0)
+            self:line(hitPoint, TransformToParentPoint(hitTransform, Vec(0, 1, 0)), 0, 0, 1)
+            self:line(hitPoint, TransformToParentPoint(hitTransform, Vec(0, 0, -1)), 1, 0, 0)
+        end
 
         self:watch('player', self:tableToString(playerTransform))
         self:watch('camera', self:tableToString(cameraTransform))
+        self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(cameraTransform.rot))))
 
         -- Extra info --
         if not self.isExtraDebugInfoEnabled then
