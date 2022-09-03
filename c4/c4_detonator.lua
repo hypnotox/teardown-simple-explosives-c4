@@ -7,6 +7,26 @@ function initC4Detonator()
 
     local isPicking = false
 
+    ---@param normal VectorType
+    ---@return number
+    local function getC4RotationFromNormal(normal)
+        Debug:dump(normal, 'Normal rotation')
+        local _, cameraRotY, _ = GetQuatEuler(GetPlayerCameraTransform().rot)
+        local normalX = normal[1]
+        local normalY = normal[2]
+        local normalZ = normal[3]
+
+        if normalX == 0 and normalY == -1 and normalZ == 0 then
+            return cameraRotY
+        end
+
+        if normalX == 0 and normalY == 1 and normalZ == 0 then
+            return -cameraRotY
+        end
+
+        return 0
+    end
+
     ---Initializes C4 detonator
     function C4Detonator:init()
         local modelPath = 'MOD/c4/model/c4_detonator.vox'
@@ -33,6 +53,7 @@ function initC4Detonator()
             if hit then
                 local pos = TransformToParentPoint(player, Vec(0, 0, -(dist - 0.02)))
                 local rot = QuatLookAt(pos, VecAdd(pos, normal))
+                rot = QuatRotateQuat(rot, QuatEuler(0, 0, getC4RotationFromNormal(normal)))
 
                 C4Manager:add(C4:new(Transform(pos, rot), shape))
             end
