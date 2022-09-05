@@ -11,9 +11,9 @@ function init()
 
     if not isInitialized then
         SetString('savegame.mod.features.keybinds.change_model', 'O')
-    end
 
-    SetBool('savegame.mod.general.is_initialized', true)
+        SetBool('savegame.mod.general.is_initialized', true)
+    end
 end
 
 function draw()
