@@ -2,14 +2,24 @@ A mod adding C4 explosives.
 
 [h2]Features[/h2]
 
-- Unlimited C4s
-- High detail model
+[h3]Unlimited C4[/h3]
+You can plant as many C4 as you want.
+Since the engine doesn't handle multiple explosions in one frame nicely only one C4 will be exploded per frame.
+
+[h3]3 different high quality models[/h3]
+This mod offers 3 different models you can switch to in-game, all of them are inspired by CS:GO / CS 1.6.
+The default keybind to switch models is "o", but can be changed in the mod options.
+The last selected model will be pre-selected the next time you start the game.
 
 [h2]Usage[/h2]
-
 When you have the tool selected simply left click to place a C4.
 To explode all planted C4s, simply have the tool selected and right click while not in range to grab anything.
+To switch the model just press "o" (default keybind). The currently selected model will be shown on the bottom left side.
+
+[h2]Credits[/h2]
+Code and tool model: Dr. HypnoTox
+C4 Models: Seb Overlay
 
 If you have any feedback, suggestions or come across any bugs/problems please comment below.
 
-(I am planning to develop more types of explosives, all under the name "Simple Explosives")
+(I, Dr. HypnoTox, am planning to develop more types of explosives, all under the name "Simple Explosives")
