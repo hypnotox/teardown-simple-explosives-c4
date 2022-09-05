@@ -52,7 +52,7 @@ function initC4()
 
     function C4:align()
         local attacherTransform = GetShapeWorldTransform(self.attacher)
-        attacherTransform.pos = TransformToParentPoint(attacherTransform, Vec(0.1, -0.1, 0.03))
+        attacherTransform.pos = TransformToParentPoint(attacherTransform, Vec(0.11, -0.1, 0.03))
         SetBodyTransform(self.body, attacherTransform)
     end
 
