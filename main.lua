@@ -22,7 +22,7 @@ end
 
 function init()
     initializeDependencies()
-    Debug:init()
+    -- Debug:init()
     C4Detonator:init()
 end
 
