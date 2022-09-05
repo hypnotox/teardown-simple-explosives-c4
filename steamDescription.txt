@@ -6,6 +6,9 @@ A mod adding C4 explosives.
 You can plant as many C4 as you want.
 Since the engine doesn't handle multiple explosions in one frame nicely only one C4 will be exploded per frame.
 
+[h3]Physics enabled[/h3]
+The C4 attaches to any surface you stick it on and will move with the object, like cars or other non static bodies.
+
 [h3]3 different high quality models[/h3]
 This mod offers 3 different models you can switch to in-game, all of them are inspired by CS:GO / CS 1.6.
 The default keybind to switch models is "o", but can be changed in the mod options.
