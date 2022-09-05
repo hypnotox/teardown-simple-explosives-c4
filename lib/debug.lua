@@ -11,17 +11,13 @@ function initDebug()
         isExtraDebugInfoEnabled = false,
     }
 
-    function Debug:tick()
-        if InputPressed(self.toggleKey) then
-            self.isEnabled = not self.isEnabled
-        end
+    function Debug:init()
+        self.isEnabled = true
+    end
 
+    function Debug:tick()
         if not self.isEnabled then
             return
-        end
-
-        if InputPressed(self.toggleExtraInfoKey) then
-            self.isExtraDebugInfoEnabled = not self.isExtraDebugInfoEnabled
         end
 
         local playerTransform = GetPlayerTransform()
@@ -41,30 +37,6 @@ function initDebug()
         self:watch('player', self:tableToString(playerTransform))
         self:watch('camera', self:tableToString(cameraTransform))
         self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(cameraTransform.rot))))
-
-        -- Extra info --
-        if not self.isExtraDebugInfoEnabled then
-            return
-        end
-
-        -- Tool
-        local tool = GetToolBody()
-        local toolTransform = GetBodyTransform(tool)
-        self:watch('tool', self:tableToString(toolTransform))
-
-        --Raycast forwards
-        local dir = TransformToParentVec(cameraTransform, {0, 0, -1})
-        local hit, dist, normal, shape = QueryRaycast(cameraTransform.pos, dir, 10)
-
-        if hit then
-            --Visualize raycast hit and normal
-            local hitPoint = VecAdd(cameraTransform.pos, VecScale(dir, dist))
-            self:line(VecAdd(cameraTransform.pos, {0, -1, 0}), hitPoint, 0, 1, 0)
-            self:line(hitPoint, VecAdd(hitPoint, normal), 1, 0, 0)
-            self:shapeOutline(shape, 1)
-            self:watch('Point', hitPoint[1] .. ', ' .. hitPoint[2] .. ', ' .. hitPoint[3])
-            self:watch('Shape', tostring(shape))
-        end
     end
 
     -- Debug functions --

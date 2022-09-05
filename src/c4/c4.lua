@@ -8,13 +8,17 @@ function initC4()
     ---Creates new C4 entity
     ---@param transform TransformType
     ---@param attachShape integer
+    ---@param model C4Model
     ---@return C4
-    function C4:new(transform, attachShape)
+    function C4:new(transform, attachShape, model)
         local attachBody = GetShapeBody(attachShape)
         local isBodyDynamic = IsBodyDynamic(attachBody)
         local attacherIndex = isBodyDynamic and 2 or 1
         local attacher = Spawn('MOD/src/model/attacher.xml', transform, not isBodyDynamic, true)[attacherIndex]
-        local body = Spawn('<vox pos="0.0 -0.2 -0.05" file="MOD/src/c4/model/c4.vox" scale="0.25"/>', transform)[1]
+        local body = Spawn(
+            '<vox pos="0.0 -0.2 -0.05" file="' .. model.path .. '" scale="' .. model.scale .. '"/>', 
+            transform
+        )[1]
 
         local instance = {
             attacher = attacher,

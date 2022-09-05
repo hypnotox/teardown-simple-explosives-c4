@@ -22,6 +22,7 @@ end
 
 function init()
     initializeDependencies()
+    Debug:init()
     C4Detonator:init()
 end
 
@@ -42,4 +43,12 @@ function update()
 
     C4Manager:update()
     C4Detonator:update()
+end
+
+function draw()
+    if not initialized then
+        initializeDependencies()
+    end
+
+    C4Detonator:draw()
 end
