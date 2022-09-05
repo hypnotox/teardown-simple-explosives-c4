@@ -22,6 +22,7 @@ function initDebug()
 
         local playerTransform = GetPlayerTransform()
         local cameraTransform = GetCameraTransform()
+        local toolTransform = GetBodyTransform(GetToolBody())
 
         local dir = TransformToParentVec(cameraTransform, {0, 0, -1})
         local hit, dist, normal, _ = QueryRaycast(cameraTransform.pos, dir, 10)
@@ -34,9 +35,12 @@ function initDebug()
             self:line(hitPoint, TransformToParentPoint(hitTransform, Vec(0, 0, -1)), 1, 0, 0)
         end
 
-        self:watch('player', self:tableToString(playerTransform))
-        self:watch('camera', self:tableToString(cameraTransform))
+        self:watch('player position', self:tableToString(playerTransform.pos))
+        self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(playerTransform.rot))))
+        self:watch('camera position', self:tableToString(cameraTransform.pos))
         self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(cameraTransform.rot))))
+        self:watch('tool position', self:tableToString(toolTransform.pos))
+        self:watch('tool rotation', self:tableToString(Vec(GetQuatEuler(toolTransform.rot))))
     end
 
     -- Debug functions --
