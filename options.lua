@@ -32,6 +32,10 @@ function draw()
     Options:subtitle('Keybinds')
     Options:value('Change selected model', 'savegame.mod.features.keybinds.change_model')
 
+    -- Inventory slot
+    Options:subtitle('Inventory slot')
+    Options:value('Set inventory slot (1-6)', 'savegame.mod.features.inventory_slot', 6, true)
+
     UiTranslate(0, 100)
     if UiTextButton('Close', 200, 40) then
         Menu()

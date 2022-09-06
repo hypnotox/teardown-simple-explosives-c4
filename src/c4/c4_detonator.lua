@@ -59,8 +59,13 @@ function initC4Detonator()
     ---Initializes C4 detonator
     function C4Detonator:init()
         local modelPath = 'MOD/src/c4/model/c4_detonator.vox'
+        local inventorySlot = GetInt('savegame.mod.features.inventory_slot')
+
+        if inventorySlot == 0 then
+            inventorySlot = 6
+        end
         
-        RegisterTool('hypnotox_explosives_c4', 'C4', modelPath, 6)
+        RegisterTool('hypnotox_explosives_c4', 'C4', modelPath, inventorySlot)
         SetBool('game.tool.hypnotox_explosives_c4.enabled', true)
         SetFloat('game.tool.hypnotox_explosives_c4.ammo', self.maxAmmo)
 
