@@ -17,13 +17,14 @@ local function initializeDependencies()
     initC4()
     initC4Manager()
     initC4Detonator()
+    -- Debug:init()
+    C4Manager:init()
+    C4Detonator:init()
     initialized = true
 end
 
 function init()
     initializeDependencies()
-    -- Debug:init()
-    C4Detonator:init()
 end
 
 function tick()

@@ -20,6 +20,28 @@ function initC4()
             transform
         )[1]
 
+        SetTag(body, 'hypnotox_explosives_c4')
+        SetTag(attacher, 'hypnotox_explosives_c4_attacher')
+
+        Debug:dump({body, attacher}, 'C4')
+
+        local instance = {
+            attacher = attacher,
+            body = body,
+        }
+
+        setmetatable(instance, self)
+        self.__index = self
+        self:align()
+
+        return instance
+    end
+
+    ---Creates new C4 entity with existing body and attacher
+    ---@param body integer
+    ---@param attacher integer
+    ---@return C4
+    function C4:fromExisting(body, attacher)
         local instance = {
             attacher = attacher,
             body = body,

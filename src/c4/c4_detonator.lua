@@ -39,7 +39,6 @@ function initC4Detonator()
     ---@param normal VectorType
     ---@return number
     local function getC4RotationFromNormal(normal)
-        Debug:dump(normal, 'Normal rotation')
         local _, cameraRotY, _ = GetQuatEuler(GetPlayerCameraTransform().rot)
         local normalX = normal[1]
         local normalY = normal[2]

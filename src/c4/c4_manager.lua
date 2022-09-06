@@ -7,6 +7,19 @@ function initC4Manager()
         explodingC4 = {},
     }
 
+    ---C4 manager init method
+    function C4Manager:init()
+        local alreadyPlantedC4s = FindBodies('hypnotox_explosives_c4')
+        local alreadyPlantedC4Attacher = FindShapes('hypnotox_explosives_c4_attacher')
+
+        Debug:dump(alreadyPlantedC4s, 'Already planted C4s')
+        Debug:dump(alreadyPlantedC4Attacher, 'Already planted C4 attacher')
+
+        for i = 1, #alreadyPlantedC4s, 1 do
+            self:add(C4:fromExisting(alreadyPlantedC4s[i], alreadyPlantedC4Attacher[i]))
+        end
+    end
+
     ---C4 manager tick method
     function C4Manager:tick()
         Debug:watch('Planted explosives', #self.placedC4)
