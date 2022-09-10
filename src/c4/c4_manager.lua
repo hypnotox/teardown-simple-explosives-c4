@@ -7,8 +7,7 @@ function initC4Manager()
         explodingC4 = {},
     }
 
-    ---C4 manager init method
-    function C4Manager:init()
+    function C4Manager:reloadPlaced()
         local alreadyPlantedC4s = FindBodies('hypnotox_explosives_c4')
         local alreadyPlantedC4Attacher = FindShapes('hypnotox_explosives_c4_attacher')
 
