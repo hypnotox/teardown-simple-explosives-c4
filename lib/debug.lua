@@ -35,12 +35,12 @@ function initDebug()
             self:line(hitPoint, TransformToParentPoint(hitTransform, Vec(0, 0, -1)), 1, 0, 0)
         end
 
-        self:watch('player position', self:tableToString(playerTransform.pos))
-        self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(playerTransform.rot))))
-        self:watch('camera position', self:tableToString(cameraTransform.pos))
-        self:watch('camera rotation', self:tableToString(Vec(GetQuatEuler(cameraTransform.rot))))
-        self:watch('tool position', self:tableToString(toolTransform.pos))
-        self:watch('tool rotation', self:tableToString(Vec(GetQuatEuler(toolTransform.rot))))
+        self:watch('player position', self:toString(playerTransform.pos))
+        self:watch('camera rotation', self:toString(Vec(GetQuatEuler(playerTransform.rot))))
+        self:watch('camera position', self:toString(cameraTransform.pos))
+        self:watch('camera rotation', self:toString(Vec(GetQuatEuler(cameraTransform.rot))))
+        self:watch('tool position', self:toString(toolTransform.pos))
+        self:watch('tool rotation', self:toString(Vec(GetQuatEuler(toolTransform.rot))))
     end
 
     -- Debug functions --
@@ -176,16 +176,16 @@ function initDebug()
     ---@param title string
     function Debug:dump(object, title)
         if title then
-            self:print(title .. ': ' .. self:tableToString(object))
+            self:print(title .. ': ' .. self:toString(object))
         else
-            self:print(self:tableToString(object))
+            self:print(self:toString(object))
         end
     end
 
     ---Get object in printable format
     ---@param object any
     ---@return string
-    function Debug:tableToString(object)
+    function Debug:toString(object)
         if object == nil then
             return 'nil'
         end
@@ -208,7 +208,7 @@ function initDebug()
             elseif (type(v) == 'string') then
                 toDump = toDump .. '\'' .. v .. '\', '
             else
-                toDump = toDump .. self:tableToString(v) .. ', '
+                toDump = toDump .. self:toString(v) .. ', '
             end
         end
 
